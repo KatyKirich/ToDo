@@ -1,74 +1,84 @@
-*{
-    margin: 0;
-    font-family: 'Montserrat', sans-serif;
+* {
+  margin: 0;
+  font-family: "Montserrat", sans-serif;
 }
-h1{
-    text-align: center;
-    font-size: 5rem;
+h1 {
+  text-align: center;
+  font-size: 5rem;
 }
-h2{
-    text-align: center;
+h2 {
+  text-align: center;
 }
-article{
-    width: 300px;
+article {
+  width: 300px;
 }
-button{
-    cursor: pointer;
+button {
+  cursor: pointer;
 }
-.box_task{
-    margin: 0 auto;
-    width: 300px;
+.box_task {
+  margin: 0 auto;
+  width: 300px;
 }
-.task{
-    height: 2rem;
-    border-radius: 15px;
-    width: 300px;
-    border: none;
+.task {
+  height: 2rem;
+  padding: 0.2rem;
+  border-radius: 15px;
+  width: 300px;
+  border: none;
 }
-.comment{
-    width: 300px;
-    border-radius: 15px;
-    border: none;
+.comment {
+  width: 300px;
+  height: 5rem;
+  padding: 0.2rem;
+  border-radius: 15px;
+  border: none;
 }
-.btn_submit{
-    width: 200px;
-    margin: 2rem 3rem;
-    text-align: center;
-    line-height: 2rem;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    font-weight: bold;
-    background-color: transparent;
-    color: white;
-    border-radius: 15px;
-    border: 2px solid white;
+.btn_submit {
+  width: 200px;
+  margin: 2rem 3rem;
+  text-align: center;
+  line-height: 2rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: bold;
+  background-color: transparent;
+  color: white;
+  border-radius: 15px;
+  border: 2px solid white;
+}
 
+.btn_submit:hover {
+  background-color: #222849;
+  border: 2px solid #222849;
 }
-
-.btn_submit:hover{
-    background-color:  #222849;
-    border: 2px solid   #222849;
+.img {
+  height: 100vh;
+  background-image: url(./img/sky.jpg);
+  background-size: cover;
+  color: white;
 }
-.img{
-    height: 100vh;
-    background-image: url(./img/sky.jpg);
-    background-size: cover;
-    color: white;
+.box_desk {
+  display: flex;
+  justify-content: space-around;
 }
-.box_desk{
-    display: flex;
-    justify-content: space-around;
+.btn_card {
+  text-align: center;
+  font-size: 2rem;
+  background-color: transparent;
+  border: none;
 }
-.btn_card{
-    text-align: center;
-    font-size: 2.5rem;
-    background-color: transparent;
-    border: none;
-
+.card {
+  border-radius: 15px;
+  border: none;
+  background-color: rgba(255, 255, 255, 0.486);
+  color: #424a78;
 }
-.card{
-    border-radius: 15px;
-    border: none;
-    background-color: rgba(255, 255, 255, 0.486);
-    color:#424a78;
+.card_text {
+  padding: 0.2rem;
+  margin: 0.1rem;
+  border-radius: 15px;
+  border: none;
+  color: #424a78;
+  background-color: white;
+  /* display: none; */
 }

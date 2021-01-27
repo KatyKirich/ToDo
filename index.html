@@ -1,49 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ToDo List</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap" rel="stylesheet">
-</head>
-<body>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
     <div class="img">
-        <header>
-            <h1>ToDo List</h1>
-        </header>
-        <main>
-            <section class="box_task">
-                <form>
-                    <h2>Task</h2>
-                    <input class="task" type="text">
-                    <h2>Comment</h2>
-                    <textarea class="comment" rows="10" cols="45" name="text"></textarea>
-                    <button class="btn_submit">SUBMIT</button>
-                </form>
-            </section>
-            <section class="box_desk">
-            <article class="card">
-                <h2>To Do</h2>
-                <p></p>
-                <button class="btn_card">&#128394;</button>
-                <button class="btn_card">	
-                    &#128465;</button>
-                <button class="btn_card">	
-                    &#10003;</button>
-            </article>
-            <article class="card">
-                <h2>In Progress</h2>
-            </article>
-            <article class="card">
-                <h2>Done</h2>
-            </article>
-            <article class="card">
-                <h2>Deleted</h2>
-            </article>
+      <header>
+        <h1>ToDo List</h1>
+      </header>
+      <main>
+        <section class="box_task">
+          <form class="form">
+            <h2>Task</h2>
+            <input class="task" type="text" />
+            <h2>Comment</h2>
+            <textarea
+              class="comment"
+              rows="10"
+              cols="45"
+              name="text"
+            ></textarea>
+            <button class="btn_submit">SUBMIT</button>
+          </form>
         </section>
-        </main>
+        <section class="box_desk">
+          <article class="card">
+            <h2>To Do</h2>
+            <div class="cards"></div>
+          </article>
+          <article class="card">
+            <h2>In Progress</h2>
+          </article>
+          <article class="card">
+            <h2>Done</h2>
+          </article>
+          <article class="card">
+            <h2>Deleted</h2>
+          </article>
+        </section>
+      </main>
     </div>
     <script src="index.js"></script>
-</body>
+  </body>
 </html>
