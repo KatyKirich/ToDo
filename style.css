@@ -56,7 +56,7 @@ button {
   background-image: url(./img/sky.jpg);
   background-size: cover;
   color: white;
-  background-attachment: local;
+  background-attachment: fixed;
 }
 .box_desk {
   display: flex;
