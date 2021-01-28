@@ -56,6 +56,7 @@ button {
   background-image: url(./img/sky.jpg);
   background-size: cover;
   color: white;
+  background-attachment: local;
 }
 .box_desk {
   display: flex;
@@ -80,5 +81,4 @@ button {
   border: none;
   color: #424a78;
   background-color: white;
-  /* display: none; */
 }
