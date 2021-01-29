@@ -1,18 +1,29 @@
 const form = document.querySelector(".form");
+
 const desk = document.querySelector(".cards");
 const deskProgress =  document.querySelector(".card_progress");
 const deskDone =  document.querySelector(".card_done");
 const deskDel =  document.querySelector(".card_del");
-const data = [];
+
+const data = {
+  todo:[],
+  progress:[],
+  done:[],
+  del:[]
+};
+
 
 const submitBtm = document.querySelector(".btn_submit");
 const delBtn = document.querySelector("#delete");
 
-let index
+
+const modal = document.querySelector(".modal");
+
+let index;
 
 const showTask = () => {
 desk.innerHTML = "";
-  data.forEach((item) => {
+  data.todo.forEach((item) => {
     desk.innerHTML += `<div class="card_text">
     <h3 class="card_task">${item.note}</h3>
     <p class="card_comment">${item.content}</p>
@@ -29,21 +40,24 @@ const searchTask = (event)=>{
   const cardTask = card.querySelector(".card_task").textContent;
   const cardComment = card.querySelector(".card_comment").textContent;
 
-  data.forEach(function (el, ind) {
-    if (el.note === cardTask && el.comment === cardComment) {
+  data.todo.forEach(function(elem, ind) {
+    if (elem.note === cardTask && elem.content === cardComment) {
       index = ind;
     }
   })
 }
 
-const delTask=(i)=>{
-  .innerHTML += `<div class="card_text">
+const delTask=()=>{
+  deskDel.innerHTML="";
+  data.del.forEach((i)=>{
+  deskDel.innerHTML += `<div class="card_text">
   <h3 class="card_task">${i.note}</h3>
   <p class="card_comment">${i.content}</p>
 </div>`;
-  
-  showTask();
+})
 }
+
+
 
 submitBtm.addEventListener("click", (event) => {
   event.preventDefault();
@@ -51,25 +65,35 @@ submitBtm.addEventListener("click", (event) => {
   const task = document.querySelector(".task");
   const comment = document.querySelector(".comment");
 
-  data.push({ note: task.value, content: comment.value });
+  data.todo.push({ note: task.value, content: comment.value });
 
   showTask();
   form.reset();
 });
 
+
+
 desk.addEventListener("click", (event)=>{
   event.preventDefault();
 
   if (event.target.closest("#redact")){
-
+    modal.style.display="block"
     searchTask(event)
+
   } 
 if(event.target.closest("#delete")){
 
   searchTask(event);
-  delTask( index);
+  
+  data.del.push(data.todo[index]);
+  data.todo.splice(data.todo[index],1)
+
+  delTask();
+  showTask();
 }
 if(event.target.closest("#done")){
+
   searchTask(event)
+
 }
 })
