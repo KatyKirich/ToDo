@@ -116,7 +116,7 @@ button {
   background-color: transparent;
   border: none;
 }
-@media (max-width: 600px) {
+@media (max-width: 800px) {
   .box_desk {
     flex-wrap: wrap;
   }
