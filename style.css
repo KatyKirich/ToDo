@@ -82,3 +82,37 @@ button {
   color: #424a78;
   background-color: white;
 }
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  background-color: rgba(31, 31, 31, 0.479);
+}
+.modal__wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 700px;
+  margin-right: -50%;
+  padding: 1rem;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  border-radius: 15px;
+}
+.inp_modal {
+  height: 2rem;
+  padding: 0.2rem;
+  border-radius: 15px;
+  width: 300px;
+  border: 2px solid #222849;
+}
+.btn_modal {
+  text-align: center;
+  font-size: 2rem;
+  background-color: transparent;
+  border: none;
+}

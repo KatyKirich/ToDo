@@ -11,45 +11,53 @@
     />
   </head>
   <body class="img">
-    
-      <header>
-        <h1>ToDo List</h1>
-      </header>
-      <main>
-        <section class="box_task">
-          <form class="form">
-            <h2>Task</h2>
-            <input class="task" type="text" />
-            <h2>Comment</h2>
-            <textarea
-              class="comment"
-              rows="10"
-              cols="45"
-              name="text"
-            ></textarea>
-            <button class="btn_submit">SUBMIT</button>
-          </form>
-        </section>
-        <section class="box_desk">
-          <article class="card">
-            <h2>To Do</h2>
-            <div class="cards"></div>
-          </article>
-          <article class="card">
-            <h2>In Progress</h2>
-            <div class="card_progress"></div>
-          </article>
-          <article class="card">
-            <h2>Done</h2>
-            <div class="card_done"></div>
-          </article>
-          <article class="card">
-            <h2>Deleted</h2>
-            <div class="card_del"></div>
-          </article>
-        </section>
-      </main>
-    
+    <header>
+      <h1>ToDo List</h1>
+    </header>
+    <main>
+      <section class="box_task">
+        <form class="form">
+          <h2>Task</h2>
+          <input class="task" type="text" />
+          <h2>Comment</h2>
+          <textarea class="comment" rows="10" cols="45" name="text"></textarea>
+          <button class="btn_submit">SUBMIT</button>
+        </form>
+      </section>
+      <section class="box_desk">
+        <article class="card">
+          <h2>To Do</h2>
+          <div class="cards"></div>
+        </article>
+        <article class="card">
+          <h2>In Progress</h2>
+          <div class="card_progress"></div>
+        </article>
+        <article class="card">
+          <h2>Done</h2>
+          <div class="card_done"></div>
+        </article>
+        <article class="card">
+          <h2>Deleted</h2>
+          <div class="card_del"></div>
+        </article>
+      </section>
+      <div class="modal">
+        <div class="modal__wrapper">
+          <div class="modal__content">
+            <form style="width: 300px">
+              <h2 style="color: #222849">Task</h2>
+              <input type="text" id="inpTask" class="inp_modal" />
+              <h2 style="color: #222849">Comment</h2>
+              <input type="text" id="inpComment" class="inp_modal" />
+            </form>
+          </div>
+          <button class="btn_modal" id="saveBtn">&#10003;</button>
+          <button class="btn_modal" id="closeBtn">&#128937;</button>
+        </div>
+      </div>
+    </main>
+
     <script src="index.js"></script>
   </body>
 </html>
