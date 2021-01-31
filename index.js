@@ -38,7 +38,7 @@ const showTask = () => {
   });
 };
 
-const searchTask = (event) => {
+const searchTask = (event, obj) => {
   const card = event.target.closest(".card_text");
 
   const cardTask = card.querySelector(".card_task").textContent;
@@ -47,7 +47,7 @@ const searchTask = (event) => {
   inpT.value = cardTask;
   inpC.value = cardComment;
 
-  data.todo.forEach(function (elem, ind) {
+  obj.forEach(function (elem, ind) {
     if (elem.note === cardTask && elem.content === cardComment) {
       index = ind;
     }
@@ -55,10 +55,10 @@ const searchTask = (event) => {
   console.log(index);
 };
 
-const delTask = () => {
-  deskDel.innerHTML = "";
-  data.del.forEach((i) => {
-    deskDel.innerHTML += `<div class="card_text">
+const delTask = (desk, obj) => {
+  desk.innerHTML = "";
+  obj.forEach((i) => {
+    desk.innerHTML += `<div class="card_text">
   <h3 class="card_task">${i.note}</h3>
   <p class="card_comment">${i.content}</p>
 </div>`;
@@ -107,19 +107,19 @@ desk.addEventListener("click", (event) => {
   if (event.target.closest("#redact")) {
     modal.style.display = "block";
 
-    searchTask(event);
+    searchTask(event, data.todo);
   }
   if (event.target.closest("#delete")) {
-    searchTask(event);
+    searchTask(event, data.todo);
 
     data.del.push(data.todo[index]);
     data.todo.splice(data.todo[index], 1);
 
-    delTask();
+    delTask(deskDel, data.del);
     showTask();
   }
   if (event.target.closest("#done")) {
-    searchTask(event);
+    searchTask(event, data.todo);
 
     data.progress.push(data.todo[index]);
     data.todo.splice(data.todo[index], 1);
@@ -136,4 +136,17 @@ clsModal.addEventListener("click", () => {
 saveModal.addEventListener("click", () => {
   redactTask(index);
   closeModal();
+});
+
+deskProgress.addEventListener("click", (event) => {
+  event.preventDefault();
+
+  if (event.target.closest("#done")) {
+    searchTask(event, data.progress);
+
+    data.done.push(data.progress[index]);
+    data.progress.splice(data.progress[index], 1);
+
+    delTask(deskDone, data.done);
+  }
 });
