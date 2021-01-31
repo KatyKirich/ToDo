@@ -116,3 +116,14 @@ button {
   background-color: transparent;
   border: none;
 }
+@media (max-width: 600px) {
+  .box_desk {
+    flex-wrap: wrap;
+  }
+  .card {
+    margin: 0.5rem;
+  }
+  .modal__wrapper {
+    width: 350px;
+  }
+}
