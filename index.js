@@ -25,10 +25,10 @@ let newComment;
 
 let index;
 
-const showTask = () => {
-  desk.innerHTML = "";
-  data.todo.forEach((item) => {
-    desk.innerHTML += `<div class="card_text">
+const showTask = (task, obj) => {
+  task.innerHTML = "";
+  obj.forEach((item) => {
+    task.innerHTML += `<div class="card_text">
     <h3 class="card_task">${item.note}</h3>
     <p class="card_comment">${item.content}</p>
     <button class="btn_card" id="redact">&#128394;</button>
@@ -71,7 +71,7 @@ const redactTask = (ind) => {
 
   data.todo.splice(ind, 1, { note: newTask, content: newComment });
 
-  showTask();
+  showTask(desk, data.todo);
 };
 
 const getProgress = () => {
@@ -97,7 +97,7 @@ submitBtn.addEventListener("click", (event) => {
 
   data.todo.push({ note: task.value, content: comment.value });
 
-  showTask();
+  showTask(desk, data.todo);
   form.reset();
 });
 
@@ -116,7 +116,7 @@ desk.addEventListener("click", (event) => {
     data.todo.splice(data.todo[index], 1);
 
     delTask(deskDel, data.del);
-    showTask();
+    showTask(desk, data.todo);
   }
   if (event.target.closest("#done")) {
     searchTask(event, data.todo);
@@ -125,7 +125,7 @@ desk.addEventListener("click", (event) => {
     data.todo.splice(data.todo[index], 1);
 
     getProgress();
-    showTask();
+    showTask(desk, data.todo);
   }
 });
 
@@ -148,5 +148,6 @@ deskProgress.addEventListener("click", (event) => {
     data.progress.splice(data.progress[index], 1);
 
     delTask(deskDone, data.done);
+    showTask(deskProgress, data.progress);
   }
 });
