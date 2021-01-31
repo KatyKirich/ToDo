@@ -1,17 +1,20 @@
 const form = document.querySelector(".form");
+
 const desk = document.querySelector(".cards");
-const deskProgress =  document.querySelector(".card_progress");
-const deskDone =  document.querySelector(".card_done");
-const deskDel =  document.querySelector(".card_del");
+const deskProgress = document.querySelector(".card_progress");
+const deskDone = document.querySelector(".card_done");
+const deskDel = document.querySelector(".card_del");
+
 const data = [];
+const dataDel = [];
 
 const submitBtm = document.querySelector(".btn_submit");
 const delBtn = document.querySelector("#delete");
 
-let index
+let index;
 
 const showTask = () => {
-desk.innerHTML = "";
+  desk.innerHTML = "";
   data.forEach((item) => {
     desk.innerHTML += `<div class="card_text">
     <h3 class="card_task">${item.note}</h3>
@@ -23,7 +26,7 @@ desk.innerHTML = "";
   });
 };
 
-const searchTask = (event)=>{
+const searchTask = (event) => {
   const card = event.target.closest(".card_text");
 
   const cardTask = card.querySelector(".card_task").textContent;
@@ -33,17 +36,20 @@ const searchTask = (event)=>{
     if (el.note === cardTask && el.comment === cardComment) {
       index = ind;
     }
-  })
-}
+  });
+  console.log(index);
+};
 
-const delTask=(i)=>{
-  .innerHTML += `<div class="card_text">
+const delTask = (i) => {
+  deskDel.innerHTML = "";
+  data[i];
+  deskDel.innerHTML += `<div class="card_text">
   <h3 class="card_task">${i.note}</h3>
   <p class="card_comment">${i.content}</p>
 </div>`;
-  
+
   showTask();
-}
+};
 
 submitBtm.addEventListener("click", (event) => {
   event.preventDefault();
@@ -57,19 +63,18 @@ submitBtm.addEventListener("click", (event) => {
   form.reset();
 });
 
-desk.addEventListener("click", (event)=>{
+desk.addEventListener("click", (event) => {
   event.preventDefault();
 
-  if (event.target.closest("#redact")){
-
-    searchTask(event)
-  } 
-if(event.target.closest("#delete")){
-
-  searchTask(event);
-  delTask( index);
-}
-if(event.target.closest("#done")){
-  searchTask(event)
-}
-})
+  if (event.target.closest("#redact")) {
+    searchTask(event);
+  }
+  if (event.target.closest("#delete")) {
+    searchTask(event);
+    console.log(index);
+    dataDel.push(index);
+  }
+  if (event.target.closest("#done")) {
+    searchTask(event);
+  }
+});
