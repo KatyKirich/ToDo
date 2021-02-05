@@ -52,7 +52,7 @@ const searchTask = (event, obj) => {
       index = ind;
     }
   });
-  console.log(index);
+  
 };
 
 const delTask = (desk, obj) => {
@@ -111,9 +111,15 @@ desk.addEventListener("click", (event) => {
   }
   if (event.target.closest("#delete")) {
     searchTask(event, data.todo);
+    console.log(index);
+    debugger
 
     data.del.push(data.todo[index]);
-    data.todo.splice(data.todo[index], 1);
+    console.log(index);
+    console.log(data.del);
+    console.log(data.todo)
+    data.todo.splice(index, 1);
+    console.log(data.todo)
 
     delTask(deskDel, data.del);
     showTask(desk, data.todo);
@@ -122,7 +128,7 @@ desk.addEventListener("click", (event) => {
     searchTask(event, data.todo);
 
     data.progress.push(data.todo[index]);
-    data.todo.splice(data.todo[index], 1);
+    data.todo.splice(index, 1);
 
     getProgress();
     showTask(desk, data.todo);
@@ -145,7 +151,7 @@ deskProgress.addEventListener("click", (event) => {
     searchTask(event, data.progress);
 
     data.done.push(data.progress[index]);
-    data.progress.splice(data.progress[index], 1);
+    data.progress.splice(index, 1);
 
     delTask(deskDone, data.done);
     showTask(deskProgress, data.progress);
