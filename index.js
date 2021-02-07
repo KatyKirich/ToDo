@@ -27,13 +27,19 @@ let index;
 
 const showTask = (task, obj) => {
   task.innerHTML = "";
-  obj.forEach((item) => {
+  obj[task.class].forEach((item) => {
     task.innerHTML += `<div class="card_text">
     <h3 class="card_task">${item.note}</h3>
     <p class="card_comment">${item.content}</p>
-    <button class="btn_card" id="redact">&#128394;</button>
+
+    ${task.class ==="cards" ? 
+    `<button class="btn_card" id="redact">&#128394;</button>
     <button class="btn_card" id ="delete">&#128465;</button>
-    <button class="btn_card" id ="done">&#10003;</button>
+    <button class="btn_card" id ="done">&#10003;</button>`}
+
+    ${task.class ==="card_done" || task.class ==="card_del" ?  }
+
+    ${task.class ==="card_progress"? <button class="btn_card" id ="done">&#10003;</button>}
   </div>`;
   });
 };
@@ -113,7 +119,7 @@ desk.addEventListener("click", (event) => {
     searchTask(event, data.todo);
 
     data.del.push(data.todo[index]);
-    data.todo.splice(data.todo[index], 1);
+    data.todo.splice(index, 1);
 
     delTask(deskDel, data.del);
     showTask(desk, data.todo);
@@ -122,7 +128,7 @@ desk.addEventListener("click", (event) => {
     searchTask(event, data.todo);
 
     data.progress.push(data.todo[index]);
-    data.todo.splice(data.todo[index], 1);
+    data.todo.splice(index, 1);
 
     getProgress();
     showTask(desk, data.todo);
@@ -145,7 +151,7 @@ deskProgress.addEventListener("click", (event) => {
     searchTask(event, data.progress);
 
     data.done.push(data.progress[index]);
-    data.progress.splice(data.progress[index], 1);
+    data.progress.splice(index, 1);
 
     delTask(deskDone, data.done);
     showTask(deskProgress, data.progress);
