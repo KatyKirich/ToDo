@@ -58,7 +58,7 @@ const searchTask = (event, obj) => {
       index = ind;
     }
   });
-  console.log(index);
+  
 };
 
 const delTask = (desk, obj) => {
@@ -117,6 +117,8 @@ desk.addEventListener("click", (event) => {
   }
   if (event.target.closest("#delete")) {
     searchTask(event, data.todo);
+    console.log(index);
+    debugger
 
     data.del.push(data.todo[index]);
     data.todo.splice(index, 1);
