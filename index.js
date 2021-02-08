@@ -32,14 +32,14 @@ const showTask = (task, obj) => {
     <h3 class="card_task">${item.note}</h3>
     <p class="card_comment">${item.content}</p>
 
-    ${task.class ==="cards" ? 
+    ${ task.class ==="cards" ?
     `<button class="btn_card" id="redact">&#128394;</button>
     <button class="btn_card" id ="delete">&#128465;</button>
     <button class="btn_card" id ="done">&#10003;</button>`}
 
-    ${task.class ==="card_done" || task.class ==="card_del" ?  }
+    ${ if (task.class ==="card_done" || task.class ==="card_del") {``}  }
 
-    ${task.class ==="card_progress"? <button class="btn_card" id ="done">&#10003;</button>}
+    ${ if (task.class ==="card_progress"){`<button class="btn_card" id ="done">&#10003;</button>`}}
   </div>`;
   });
 };
