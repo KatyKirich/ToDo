@@ -27,19 +27,19 @@ let index;
 
 const showTask = (task, obj) => {
   task.innerHTML = "";
-  obj[task.class].forEach((item) => {
+  obj.forEach((item) => {
     task.innerHTML += `<div class="card_text">
     <h3 class="card_task">${item.note}</h3>
     <p class="card_comment">${item.content}</p>
 
-    ${task.class ==="cards" ? 
+    ${task === desk ? 
     `<button class="btn_card" id="redact">&#128394;</button>
     <button class="btn_card" id ="delete">&#128465;</button>
     <button class="btn_card" id ="done">&#10003;</button>`: null}
 
-    ${task.class ==="card_done" || task.class ==="card_del"}
+    ${task === deskDone || task ===deskDel}
 
-    ${task.class ==="card_progress"? `<button class="btn_card" id ="done">&#10003;</button>`: null}
+    ${task === deskProgress ? `<button class="btn_card" id ="done">&#10003;</button>`: null}
   </div>`;
   });
 };
