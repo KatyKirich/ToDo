@@ -27,19 +27,24 @@ let index;
 
 const showTask = (task, obj) => {
   task.innerHTML = "";
-  obj[task.class].forEach((item) => {
+  obj.forEach((item) => {
     task.innerHTML += `<div class="card_text">
     <h3 class="card_task">${item.note}</h3>
     <p class="card_comment">${item.content}</p>
 
-    ${ task.class ==="cards" ?
-    `<button class="btn_card" id="redact">&#128394;</button>
+    ${
+      task === desk
+        ? `<button class="btn_card" id="redact">&#128394;</button>
     <button class="btn_card" id ="delete">&#128465;</button>
-    <button class="btn_card" id ="done">&#10003;</button>`}
+    <button class="btn_card" id ="done">&#10003;</button>`
+        : ""
+    }
 
-    ${ if (task.class ==="card_done" || task.class ==="card_del") {``}  }
-
-    ${ if (task.class ==="card_progress"){`<button class="btn_card" id ="done">&#10003;</button>`}}
+    ${
+      task === deskProgress
+        ? `<button class="btn_card" id ="done">&#10003;</button>`
+        : ""
+    }
   </div>`;
   });
 };
@@ -58,18 +63,17 @@ const searchTask = (event, obj) => {
       index = ind;
     }
   });
-  
 };
 
-const delTask = (desk, obj) => {
-  desk.innerHTML = "";
-  obj.forEach((i) => {
-    desk.innerHTML += `<div class="card_text">
-  <h3 class="card_task">${i.note}</h3>
-  <p class="card_comment">${i.content}</p>
-</div>`;
-  });
-};
+// const delTask = (desk, obj) => {
+//   desk.innerHTML = "";
+//   obj.forEach((i) => {
+//     desk.innerHTML += `<div class="card_text">
+//   <h3 class="card_task">${i.note}</h3>
+//   <p class="card_comment">${i.content}</p>
+// </div>`;
+//   });
+// };
 
 const redactTask = (ind) => {
   newTask = inpT.value;
@@ -80,16 +84,16 @@ const redactTask = (ind) => {
   showTask(desk, data.todo);
 };
 
-const getProgress = () => {
-  deskProgress.innerHTML = "";
-  data.progress.forEach((i) => {
-    deskProgress.innerHTML += `<div class="card_text">
-    <h3 class="card_task">${i.note}</h3>
-    <p class="card_comment">${i.content}</p>
-    <button class="btn_card" id ="done">&#10003;</button>
-  </div>`;
-  });
-};
+// const getProgress = () => {
+//   deskProgress.innerHTML = "";
+//   data.progress.forEach((i) => {
+//     deskProgress.innerHTML += `<div class="card_text">
+//     <h3 class="card_task">${i.note}</h3>
+//     <p class="card_comment">${i.content}</p>
+//     <button class="btn_card" id ="done">&#10003;</button>
+//   </div>`;
+//   });
+// };
 
 const closeModal = () => {
   modal.style.display = "none";
@@ -117,13 +121,11 @@ desk.addEventListener("click", (event) => {
   }
   if (event.target.closest("#delete")) {
     searchTask(event, data.todo);
-    console.log(index);
-    debugger
 
     data.del.push(data.todo[index]);
     data.todo.splice(index, 1);
 
-    delTask(deskDel, data.del);
+    showTask(deskDel, data.del);
     showTask(desk, data.todo);
   }
   if (event.target.closest("#done")) {
@@ -132,7 +134,7 @@ desk.addEventListener("click", (event) => {
     data.progress.push(data.todo[index]);
     data.todo.splice(index, 1);
 
-    getProgress();
+    showTask(deskProgress, data.progress);
     showTask(desk, data.todo);
   }
 });
@@ -155,7 +157,7 @@ deskProgress.addEventListener("click", (event) => {
     data.done.push(data.progress[index]);
     data.progress.splice(index, 1);
 
-    delTask(deskDone, data.done);
+    showTask(deskDone, data.done);
     showTask(deskProgress, data.progress);
   }
 });
